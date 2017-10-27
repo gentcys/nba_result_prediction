@@ -27,6 +27,8 @@ class ScheduleResultsProcesser(object):
 
         schedule_results.drop(schedule_results.columns[[1,3]], axis=1, inplace=True)
 
+        schedule_results.columns = ['WTeam', 'LTeam', 'WVenue']
+
         filename = filename[:-4] + '-processed' + filename[-4:]
 
         schedule_results.to_csv(filename, index=False)

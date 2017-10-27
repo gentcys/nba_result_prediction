@@ -13,9 +13,9 @@ class SchedulesProcesser(object):
     '''
 
     def main(self, schedules, filename):
-        schedules.drop(schedules.columns[[0,1,3,5,6,7,8]], axis=1, inplace=True)
+        schedules.drop(schedules.columns[[1,3,5,6,7,8]], axis=1, inplace=True)
 
-        schedules.columns = ['Away', 'Home']
+        schedules.columns = ['Date', 'Away', 'Home']
 
         filename = filename[:-4] + '-processed' + filename[-4:]
 
