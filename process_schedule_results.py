@@ -4,7 +4,7 @@ import pandas
 
 class ScheduleResultsProcesser(object):
     '''
-    Read schedule result files, deal with their contents and return a new file within the content formatted like this:
+    Read schedule result file, deal with its contents and return a new file within the content formatted like this:
     WTeam,LTeam,WVenue
     New Your Knicks,Brooklyn Nets,Vistor
     Toronto Raptors,Boston Celtics,Home
@@ -14,10 +14,10 @@ class ScheduleResultsProcesser(object):
 
     def main(self, schedule_results, filename):
         schedule_results.drop(schedule_results.columns[[0,1,6,7,8]], axis=1, inplace=True)
-        schedule_results = schedule_results.assign(WVenue = 'xx')
+        schedule_results = schedule_results.assign(WVenue = '')
 
         for i, row in schedule_results.iterrows():
-            row['WVenue'] = 'Visitor'
+            row['WVenue'] = 'Away'
 
             if row['PTS'] < row['PTS.1']:
                 row['Visitor/Neutral'], row['Home/Neutral'] = row['Home/Neutral'], row['Visitor/Neutral']
